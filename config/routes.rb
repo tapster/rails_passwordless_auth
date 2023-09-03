@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-
-  # Defines the root path route ("/")
-  # root "articles#index"
+  resource :auth, only: [:show, :create, :destroy], controller: :auth
+  resource :auth_verification, only: [:show, :create], controller: :auth_verification
+  root "home#index"
 end
+

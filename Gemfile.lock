@@ -173,6 +173,7 @@ GEM
     reline (0.3.8)
       io-console (~> 0.5)
     rexml (3.2.6)
+    rotp (6.3.0)
     rubyzip (2.3.2)
     selenium-webdriver (4.10.0)
       rexml (~> 3.2, >= 3.2.5)
@@ -228,6 +229,7 @@ DEPENDENCIES
   puma (~> 5.0)
   rails (~> 7.0.7, >= 7.0.7.2)
   redis (~> 4.0)
+  rotp (~> 6.3)
   selenium-webdriver
   sprockets-rails
   sqlite3 (~> 1.4)

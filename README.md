@@ -1,24 +1,5 @@
-# README
+# Password-less Authentication with Rails
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This repo has the code associated with my blog about Password-less Authentication with Rails.
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Read all about it here https://mileswoodroffe.com/articles/passwordless-auth-with-rails-pt1
