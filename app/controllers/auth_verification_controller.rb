@@ -1,4 +1,6 @@
 class AuthVerificationController < ApplicationController
+  skip_before_action :verify_authenticity_token, if: -> { request.format.json? }
+
   def create
     user = User.find_by(email: session[:email])
 
@@ -8,13 +10,27 @@ class AuthVerificationController < ApplicationController
 
       session.delete(:email)
 
-      redirect_to root_path, notice: "You are now signed in!"
+      respond_to do |format|
+        format.html { redirect_to root_path, notice: "You are now signed in" }
+        format.json { render json: { token: access_token.token } }
+      end
     else
-      redirect_to auth_verification_path, notice: "Please check your verification code and try again."
+      respond_to do |format|
+        format.html do
+          redirect_to auth_verification_path,
+                      notice:
+                        "Please check your verification code and try again."
+        end
+        format.json do
+          render json: {
+                   msg: "invalid-verification-code."
+                 },
+                 status: :unauthorized
+        end
+      end
     end
   end
 
   def show
   end
 end
-

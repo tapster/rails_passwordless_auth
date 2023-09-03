@@ -1,4 +1,6 @@
 class AuthController < ApplicationController
+  skip_before_action :verify_authenticity_token, if: -> { request.format.json? }
+
   def show
   end
 
@@ -10,13 +12,18 @@ class AuthController < ApplicationController
 
     session[:email] = email
 
-    redirect_to auth_verification_path
+    respond_to do |format|
+      format.html { redirect_to auth_verification_path }
+      format.json { render json: { msg: "verification-email-sent" } }
+    end
   end
 
   def destroy
     cookies.delete :access_token
 
-    redirect_to root_path, notice: "You're now signed out"
+    respond_to do |format|
+      format.html { redirect_to root_path, notice: "You're now signed out" }
+      format.json { render json: { msg: "signed-out" } }
+    end
   end
 end
-
